@@ -6,7 +6,11 @@ app.get("/", function(req, res) {
 });
 
 app.get("/whoami/", function(req, res) {
-  res.send("you got it!");
+  var obj = {};
+  obj.ipaddress = req.ip;
+  obj.language = req.get("accept-language");
+  obj.software = req.get("user-agent");
+  res.send(JSON.stringify(obj));
 });
 
 var port = process.env.PORT || 8080;
