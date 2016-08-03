@@ -1,5 +1,7 @@
 var express = require('express');
 var app = express();
+app.enable('trust proxy');
+
 
 app.get("/", function(req, res) {
   res.send("Whoami app. please refer to whoami/ to get further info");
@@ -7,6 +9,7 @@ app.get("/", function(req, res) {
 
 app.get("/whoami/", function(req, res) {
   var obj = {};
+  // obj.ipaddress = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   obj.ipaddress = req.ip;
   obj.language = req.get("accept-language");
   obj.software = req.get("user-agent");
