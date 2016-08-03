@@ -9,6 +9,7 @@ app.get("/whoami/", function(req, res) {
   res.send("you got it!");
 });
 
-app.listen(8080, function() {
-  console.log("app started");
+var port = process.env.PORT || 8080;
+app.listen(port,  function () {
+  console.log('Node.js listening on port ' + port + '...');
 });
